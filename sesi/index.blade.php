@@ -1,5 +1,6 @@
 @extends('layouts.app')
 
+@section('content')
 
 @if(session('pesan'))
 <div class="alert alert-success">
@@ -7,11 +8,16 @@
 </div>
 @endif
 
-@section('content')
+@if($errors->any())
+<div class="alert alert-danger">
+	@foreach ($errors->all() as $error)
+	<div>{{ $error }}</div>
+	@endforeach
+</div>
+@endif
 
 <div class="w-50 center border rounded px-3 py-3 mx-auto">
 	<h1>Login</h1>
-	<a href="/sesi/register">Register</a>
 	<form action="/sesi/login" method="POST">
 		@csrf
 		<div class="mb-3">

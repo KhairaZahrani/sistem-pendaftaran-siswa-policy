@@ -10,7 +10,6 @@
 
 <div class="w-50 center border rounded px-3 py-3 mx-auto">
 	<h1>Register</h1>
-	<a href="/sesi">Login</a>
 	<form action="/sesi/create" method="POST">
 		@csrf
 		<div class="mb-3">
