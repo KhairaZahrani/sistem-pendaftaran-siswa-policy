@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Waktu pembuatan: 19 Agu 2024 pada 10.42
+-- Waktu pembuatan: 27 Agu 2024 pada 08.34
 -- Versi server: 10.4.32-MariaDB
 -- Versi PHP: 8.2.12
 
@@ -18,32 +18,8 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8mb4 */;
 
 --
--- Database: `laravel`
+-- Database: `laravel08`
 --
-
--- --------------------------------------------------------
-
---
--- Struktur dari tabel `barangs`
---
-
-CREATE TABLE `barangs` (
-  `id` bigint(20) UNSIGNED NOT NULL,
-  `nama_barang` varchar(255) NOT NULL,
-  `harga_barang` int(11) NOT NULL,
-  `jenis_barang` varchar(255) NOT NULL,
-  `created_at` timestamp NULL DEFAULT NULL,
-  `updated_at` timestamp NULL DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
-
---
--- Dumping data untuk tabel `barangs`
---
-
-INSERT INTO `barangs` (`id`, `nama_barang`, `harga_barang`, `jenis_barang`, `created_at`, `updated_at`) VALUES
-(1, 'Komputer', 89000, 'elektronik', '2024-08-14 01:01:11', '2024-08-14 01:01:11'),
-(3, 'Handphone', 90000, 'Elektronik', '2024-08-14 01:52:59', '2024-08-14 02:47:55'),
-(10, 'sepatu', 1000000, 'kain', '2024-08-14 02:59:37', '2024-08-14 03:00:33');
 
 -- --------------------------------------------------------
 
@@ -78,13 +54,11 @@ CREATE TABLE `migrations` (
 --
 
 INSERT INTO `migrations` (`id`, `migration`, `batch`) VALUES
-(6, '2024_08_14_043055_create_barangs_table', 2),
-(11, '2014_10_12_000000_create_users_table', 3),
-(12, '2014_10_12_100000_create_password_resets_table', 3),
-(13, '2019_08_19_000000_create_failed_jobs_table', 3),
-(14, '2019_12_14_000001_create_personal_access_tokens_table', 3),
-(15, '2024_08_15_073151_create_siswa_table', 3),
-(16, '2024_08_16_061746_add_foto_to_siswa_table', 3);
+(1, '2014_10_12_000000_create_users_table', 1),
+(2, '2014_10_12_100000_create_password_resets_table', 1),
+(3, '2019_08_19_000000_create_failed_jobs_table', 1),
+(4, '2019_12_14_000001_create_personal_access_tokens_table', 1),
+(5, '2024_08_26_150336_create_siswas_table', 1);
 
 -- --------------------------------------------------------
 
@@ -120,24 +94,26 @@ CREATE TABLE `personal_access_tokens` (
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `siswa`
+-- Struktur dari tabel `siswas`
 --
 
-CREATE TABLE `siswa` (
+CREATE TABLE `siswas` (
+  `id` bigint(20) UNSIGNED NOT NULL,
+  `nis` varchar(255) NOT NULL,
   `nama` varchar(255) NOT NULL,
-  `nomor_induk` int(11) NOT NULL,
-  `alamat` text NOT NULL,
+  `alamat` varchar(255) NOT NULL,
+  `tgl_lahir` date NOT NULL,
   `created_at` timestamp NULL DEFAULT NULL,
-  `updated_at` timestamp NULL DEFAULT NULL,
-  `foto` varchar(255) DEFAULT NULL
+  `updated_at` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
--- Dumping data untuk tabel `siswa`
+-- Dumping data untuk tabel `siswas`
 --
 
-INSERT INTO `siswa` (`nama`, `nomor_induk`, `alamat`, `created_at`, `updated_at`, `foto`) VALUES
-('Sari Citra Lestari', 1000, 'Jakarta', '2024-08-16 01:41:19', '2024-08-16 01:41:19', '240816084119.jpg');
+INSERT INTO `siswas` (`id`, `nis`, `nama`, `alamat`, `tgl_lahir`, `created_at`, `updated_at`) VALUES
+(1, '100298', 'Annisa Lestari', 'Jambi', '2024-08-09', '2024-08-26 22:45:28', '2024-08-26 22:45:28'),
+(2, '100299', 'Khaira Zahrani', 'Pertanian', '2008-01-02', '2024-08-26 23:14:41', '2024-08-26 23:14:41');
 
 -- --------------------------------------------------------
 
@@ -161,19 +137,11 @@ CREATE TABLE `users` (
 --
 
 INSERT INTO `users` (`id`, `name`, `email`, `email_verified_at`, `password`, `remember_token`, `created_at`, `updated_at`) VALUES
-(1, 'khaira', 'khaira@gmail.com', NULL, '$2y$10$n3JR1PAg8X6FyzrW55DWhurHnvlxp.XzmnL8PYW24FaxSMEoQI4H6', NULL, NULL, NULL),
-(2, 'Khaira Zahrani', 'kayla@gmail.com', NULL, '$2y$10$RotkEI6t6IAYBXwJE9Pms.P3Xo3lcfbQRgA4/bVVZUs1BMFFw7GvC', NULL, '2024-08-16 06:06:40', '2024-08-16 06:06:40'),
-(3, 'Khaira Zahrani', 'kaylaa@gmail.com', NULL, '$2y$10$U7rPO5uNxllmkYA2/VYemO1OIzQJH2RZicX3tzjxTkzhTy.W6VsjW', NULL, '2024-08-16 06:07:53', '2024-08-16 06:07:53');
+(1, 'zahrani', 'zahrani@gmail.com', NULL, '$2y$10$oZyeQoZ3AJv3Cvs4LuHN5.Qz8WFCWT582Qj75P0dvP2qaSXBPhIq.', NULL, '2024-08-26 21:48:43', '2024-08-26 21:48:43');
 
 --
 -- Indexes for dumped tables
 --
-
---
--- Indeks untuk tabel `barangs`
---
-ALTER TABLE `barangs`
-  ADD PRIMARY KEY (`id`);
 
 --
 -- Indeks untuk tabel `failed_jobs`
@@ -192,7 +160,7 @@ ALTER TABLE `migrations`
 -- Indeks untuk tabel `password_resets`
 --
 ALTER TABLE `password_resets`
-  ADD PRIMARY KEY (`email`);
+  ADD KEY `password_resets_email_index` (`email`);
 
 --
 -- Indeks untuk tabel `personal_access_tokens`
@@ -203,10 +171,11 @@ ALTER TABLE `personal_access_tokens`
   ADD KEY `personal_access_tokens_tokenable_type_tokenable_id_index` (`tokenable_type`,`tokenable_id`);
 
 --
--- Indeks untuk tabel `siswa`
+-- Indeks untuk tabel `siswas`
 --
-ALTER TABLE `siswa`
-  ADD UNIQUE KEY `siswa_nomor_induk_unique` (`nomor_induk`);
+ALTER TABLE `siswas`
+  ADD PRIMARY KEY (`id`),
+  ADD UNIQUE KEY `siswas_nis_unique` (`nis`);
 
 --
 -- Indeks untuk tabel `users`
@@ -220,12 +189,6 @@ ALTER TABLE `users`
 --
 
 --
--- AUTO_INCREMENT untuk tabel `barangs`
---
-ALTER TABLE `barangs`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
-
---
 -- AUTO_INCREMENT untuk tabel `failed_jobs`
 --
 ALTER TABLE `failed_jobs`
@@ -235,7 +198,7 @@ ALTER TABLE `failed_jobs`
 -- AUTO_INCREMENT untuk tabel `migrations`
 --
 ALTER TABLE `migrations`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=17;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
 -- AUTO_INCREMENT untuk tabel `personal_access_tokens`
@@ -244,10 +207,16 @@ ALTER TABLE `personal_access_tokens`
   MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT;
 
 --
+-- AUTO_INCREMENT untuk tabel `siswas`
+--
+ALTER TABLE `siswas`
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+
+--
 -- AUTO_INCREMENT untuk tabel `users`
 --
 ALTER TABLE `users`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
