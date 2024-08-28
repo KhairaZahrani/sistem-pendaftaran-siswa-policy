@@ -8,7 +8,9 @@
 		<div class="col-12">
 			<div class="py-4 d-flex justify-content-between align-items-center">
 				<h1 class="h2">Tabel Data Siswa</h1>
-				<a href="{{url('/siswas/create')}}" class="btn btn-primary">+ Tambah Siswa</a>
+				@can('create', App\Models\Siswa::class)
+				<a href="/siswas/create" class="btn btn-primary">+ Tambah Siswa</a>
+				@endcan
 			</div>
 
 			@if(session('pesan'))
@@ -31,7 +33,14 @@
 					@forelse($siswas as $siswa)
 					<tr>
 						<th>{{$loop->iteration}}</th>
-						<td><a href="{{url('/siswas/'.$siswa->id)}}">{{$siswa->nis}}</a></td>
+						<td>
+							@can('view', $siswa)
+							<a href="{{url('/siswas/'.$siswa->id)}}">{{$siswa->nis}}</a>
+							@endcan
+							@cannot('view',$siswa)
+							{{$siswa->nis}}
+							@endcannot
+						</td>
 						<td>{{$siswa->nama}}</td>
 						<td>{{$siswa->alamat}}</td>
 						<td>{{$siswa->tgl_lahir}}</td>

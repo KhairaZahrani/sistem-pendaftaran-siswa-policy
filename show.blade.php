@@ -9,11 +9,13 @@
 				<h2>Info Siswa {{$siswa->nama}}</h2>
 				<div class="d-flex">
 					<a href="{{url('/siswas/'.$siswa->id.'/edit')}}" class="btn btn-primary">Edit</a>
+					@can('delete',$siswa)
 					<form action="{{url('/siswas/'.$siswa->id)}}" method="post">
 						@method('DELETE')
 						<button type="submit" class="btn btn-danger ms-3">Hapus</button>
 						@csrf
 					</form>
+					@endcan
 				</div>
 			</div>
 			<hr>

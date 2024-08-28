@@ -13,3 +13,4 @@ Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name
 
 Route::get('/', [SiswaController::class, 'index'])->middleware('auth');
 Route::resource('/siswas', SiswaController::class)->middleware('auth');
+Route::get('/siswas/{siswa}', [SiswaController::class, 'show'])->name('siswas.show')->middleware('auth')->middleware('can:view,siswa');
